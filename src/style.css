@@ -7,8 +7,13 @@ body {
   font-weight: light;
 }
 
-h1 {
+h1, h2{
   color: #feca72;
+}
+
+a, a:visited{
+  color: #feca72;
+ /*color: #c4e791;*/
 }
 
 ul {
@@ -22,8 +27,17 @@ li:before {
   color: #fc546a;
 }
 
+.page {
+  padding: 1em;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+
 .tabs {
-  position: sticky;
+  z-index: 1000;
+  position: fixed;
   top: 0;
   width: 100vw;
   display: flex;
@@ -32,8 +46,12 @@ li:before {
   align-items: stretch;
   background-color: #384048;
   padding: 0;
-  overflow: auto;
+  overflow: hidden;
   border-bottom: 1px solid black;
+}
+
+.tabs .tab.button {
+  display: none;
 }
 
 .tab {
@@ -55,24 +73,90 @@ li:before {
   background-color: #596673;
 }
 
-p {
-  line-height: 1.5em;  
+@media screen and (max-width: 700px) {
+  .tabs {
+    color: red;
+    flex-direction: column;
+  }
+
+  .tab {
+    display: none;
+    max-width: none;
+  }
+  .tab.mobileVisible{
+    display: block;
+  }
+  .tabs .tab.button {
+    text-align: left;
+    display: block;
+    font-size: 18px;
+    color: #c4e791;
+    background-color: #434c56;
+    cursor: pointer;
+  }
 }
 
-code.inline { 
+p {
+  line-height: 1.5em;
+}
+
+code.inline {
   padding: 0 0.5em;
   background-color: #384048;
   font-family: 'Source Code Pro', monospace;
   border-radius: 0.2em;
   border: 1px solid black;
- color: #c4e791;
+  color: #c4e791;
 }
 
 
 pre {
+  font-size: 18px;
   font-family: 'Source Code Pro', monospace;
   border: 1px solid black;
   border-radius: 0.2em;
+}
+
+.playground {
+  border: 1px solid black;
+  border-radius: 0.2em;
+  overflow: hidden;
+}
+.playground:before {
+  content: 'Live Editor';
+  padding: .5em;
+  display: block;
+  color: #c4e791;
+  background-color: black;
+}
+.playground .CodeMirror-wrap {
+  height: auto;
+}
+.playground .playgroundError {
+  color: red;
+  padding: .5em;
+  background-color: #292C34;
+  border-top: 1px solid black;
+}
+
+.playground .previewArea:before {
+  content: 'Live Preview';
+  display: block;
+  padding: .5em;
+  color: #c4e791;
+  background-color: black;
+  margin: calc(-1em - 1px);
+  margin-bottom: 0;
+}
+.playground .previewArea {
+  background-color: white;
+  border: 1px solid transparent;
+  padding: 1em;
+}
+
+.previewArea * {
+  color: initial;
+  border: none;
 }
 
 
@@ -80,8 +164,30 @@ code.hl {
   font-family: 'Source Code Pro', monospace;
 }
 
-.page {
+.playground .previewArea:before {
+  content: 'Live Preview';
+  display: block;
+  padding: .5em;
+  color: #c4e791;
+  background-color: black;
+  margin: calc(-1em - 1px);
+  margin-bottom: 0;
+}
+.playground .previewArea {
+  background-color: white;
+  border: 1px solid transparent;
   padding: 1em;
-  max-width: 800px;
-  margin: 0 auto;
+}
+
+.previewArea * {
+  color: initial;
+}
+
+
+code.hl {
+  font-family: 'Source Code Pro', monospace;
+}
+
+svg {
+  fill : currentColor;
 }
